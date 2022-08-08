@@ -1,5 +1,6 @@
 import Tool from './Tool';
 import {handleFinaliseDraw, wsEmit} from "../services";
+import canvasState from "../store/canvasState";
 
 class Circle extends Tool {
     constructor() {
@@ -17,6 +18,7 @@ class Circle extends Tool {
         this.mouseDown = true;
         const canvasData = this.canvas.toDataURL();
         this.ctx.beginPath();
+        canvasState.undoList.push(this.canvas.toDataURL())
         this.startX = e.pageX - e.target.offsetLeft;
         this.startY = e.pageY - e.target.offsetTop;
         this.saved = canvasData;

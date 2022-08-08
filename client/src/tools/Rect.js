@@ -1,5 +1,7 @@
 import Tool from './Tool';
 import {handleFinaliseDraw, wsEmit} from "../services";
+import canvasState from "../store/canvasState";
+
 
 class Rect extends Tool {
     constructor() {
@@ -16,6 +18,7 @@ class Rect extends Tool {
     mouseDownHandler(e) {
         this.mouseDown = true;
         this.ctx.beginPath();
+        canvasState.undoList.push(this.canvas.toDataURL())
         this.startX = e.pageX - e.target.offsetLeft;
         this.startY = e.pageY - e.target.offsetTop;
     }

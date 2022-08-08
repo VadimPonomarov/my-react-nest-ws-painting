@@ -1,5 +1,6 @@
 import Tool from './Tool';
 import {handleFinaliseDraw, wsEmit} from "../services";
+import canvasState from "../store/canvasState";
 
 class Line extends Tool {
     constructor(canvas) {
@@ -18,6 +19,7 @@ class Line extends Tool {
         this.currentX = e.pageX - e.target.offsetLeft;
         this.currentY = e.pageY - e.target.offsetTop;
         this.ctx.beginPath();
+        canvasState.undoList.push(this.canvas.toDataURL())
         this.ctx.moveTo(this.currentX, this.currentY);
     }
 
