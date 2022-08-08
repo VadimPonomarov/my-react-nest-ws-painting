@@ -1,0 +1,6 @@
+/dist
+/node_modules
+*lock*
+Dockerfile
+*eslint*
+*README*

@@ -1,0 +1,16 @@
+{
+  "name": "react-nest-paint",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "install:node_modules": "npm install --prefix client",
+    "start": "npm run build --prefix client && docker-compose up --build",
+    "stop": "docker-compose down && docker system prune",
+    "restart": "docker-compose up",
+    "rebuild": "npm run stop && docker-compose up  --build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

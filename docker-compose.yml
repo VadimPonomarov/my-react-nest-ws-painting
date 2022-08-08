@@ -1,0 +1,15 @@
+services:
+  ws:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./client/build:/usr/share/nginx/html
+      - ./client/nginx.conf:/etc/conf.d/default.conf
+    ports:
+      - 80:80
+
+  server:
+    build: ./server
+    container_name: server
+    ports:
+      - '5001:5001'

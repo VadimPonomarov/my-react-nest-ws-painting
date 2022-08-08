@@ -1,0 +1,24 @@
+@import "../../styles/vars";
+
+.settingbar {
+  display: flex;
+  align-items: center;
+  top: 44px;
+  padding: 2px 5px;
+  margin-top: 5px;
+  height: 40px;
+  width: 100%;
+  box-shadow: 0 4px 4px lightgrey;
+
+  &__btn {
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    margin: 0 3px;
+  }
+
+  label {
+    margin: 0 3px;
+  }
+}
