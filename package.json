@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "install:node_modules": "npm install --prefix client",
-    "start": "npm run build --prefix client && docker-compose up --build",
+    "start": "concurrently \"npm run start --prefix client\" \"npm run start --prefix server\"",
     "stop": "docker-compose down && docker system prune",
     "restart": "docker-compose up",
     "rebuild": "npm run stop && docker-compose up  --build"
@@ -12,5 +12,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  }
 }

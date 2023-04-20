@@ -1,15 +1,29 @@
 services:
-  ws:
-    image: nginx:latest
-    restart: always
-    volumes:
-      - ./client/build:/usr/share/nginx/html
-      - ./client/nginx.conf:/etc/conf.d/default.conf
-    ports:
-      - 80:80
 
-  server:
-    build: ./server
-    container_name: server
+  app:
+    build:
+      context: ./backend/.
+    env_file:
+      - .env
+    restart: always
     ports:
-      - '5001:5001'
+      - "5001:5001"
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+    command: >
+      sh -c  "npm run start:dev" 
+
+  client:
+    build:
+      context: ./frontend/.
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    command: >
+      sh -c  "npm run start" 
